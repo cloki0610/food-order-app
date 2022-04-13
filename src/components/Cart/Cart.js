@@ -21,6 +21,15 @@ const Cart = (props) => {
   const orderHandler = () => {
     setIsCheckout(true);
   };
+  const submitOrderHandler = (userData) => {
+    fetch("./orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+      }),
+    });
+  };
 
   const cartitems = (
     <ul className={classes["cart-items"]}>
@@ -58,7 +67,9 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onClose} />}
+      {isCheckout && (
+        <Checkout onCancel={props.onClose} onConfirm={submitOrderHandler} />
+      )}
       {!isCheckout && modalAction}
     </Modal>
   );
