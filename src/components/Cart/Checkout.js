@@ -19,10 +19,10 @@ const Checkout = (props) => {
   const confirmHandler = (event) => {
     event.preventDefault();
 
-    enteredName = nameInputRef.current.value;
-    enteredStreet = streetInputRef.current.value;
-    enteredPostalCode = postalInputRef.current.value;
-    enteredCity = cityInputRef.current.value;
+    const enteredName = nameInputRef.current.value;
+    const enteredStreet = streetInputRef.current.value;
+    const enteredPostalCode = postalInputRef.current.value;
+    const enteredCity = cityInputRef.current.value;
 
     const enteredNameIsValid = !isEmpty(enteredName);
     const enteredStreetIsValid = !isEmpty(enteredStreet);
